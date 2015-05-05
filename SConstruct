@@ -20,4 +20,5 @@ testProg = testEnv.Program('a.out', sources + testSources)
 testReport = testEnv.Command('test_report.xml', testProg, "./a.out --gtest_output=xml:${TARGET}")
 coverageReport = testEnv.Command('coverage.xml', testReport, "gcovr -x -r build -o ${TARGET}")
 
+testEnv.Clean(testProg,'build')
 Default(coverageReport)
